@@ -6,24 +6,24 @@ gparent {
     width:50vh;
 
     border:1px solid black;
-    padding:10px;
     position:relative;
 
     display:grid;
     grid-template-columns:repeat(3,1fr);
     grid-template-rows:repeat(3,1fr);
-
     grid-template-areas:
 	    "p1 p2 p3"
 	    "p4 p5 p6"
 	    "p7 p8 p9";
-    gap:5px;
 }
 
 gchild {
     color:white;
     border:1px solid white;
     background-color:black;
+
+    background-image:url('logo.png');
+    background-size:300%;
 
     display:flex;
     align-items:center;
@@ -32,19 +32,35 @@ gchild {
 
 gchild:nth-of-type(1) {
     color:black;
-    border:1px solid black;
     background-color:white;
+    background-image:none;
 }
 
+
 gchild:nth-of-type(1) {
-    grid-area:p1;
+    background-position:top left;
 }
 gchild:nth-of-type(2) {
-    grid-area:p2;
+    background-position:top center;
 }
 gchild:nth-of-type(3) {
-    grid-area:p3;
+    background-position:top right;
 }
 gchild:nth-of-type(4) {
-    grid-area:p4;
+    background-position:center left;
+}
+gchild:nth-of-type(5) {
+    background-position:center center;
+}
+gchild:nth-of-type(6) {
+    background-position:center right;
+}
+gchild:nth-of-type(7) {
+    background-position:bottom left;
+}
+gchild:nth-of-type(8) {
+    background-position:bottom center;
+}
+gchild:nth-of-type(9) {
+    background-position:bottom right;
 }

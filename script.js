@@ -10,6 +10,7 @@ const area_label = "p";
 for (let i=0;i < gchilds.length;i ++) {
     gchilds[i].style.gridArea = toArea(i+1);
 
+    // Dont add event listener for 1st child
     if(!i) { continue; }
 
     gchilds[i].addEventListener('click',function() {
