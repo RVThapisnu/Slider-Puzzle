@@ -4,18 +4,31 @@ const gchilds = document.getElementsByTagName('gchild');
 const rows = 3;
 const cols = 3;
 
+// Blank piece Index
 const b_index = 0;
 const area_label = "p";
 
-for (let i=0;i < gchilds.length;i ++) {
+const pos = {
+    "vert" : ["top","center","bottom"],
+    "horz" : ["left","center","right"]
+};
+
+for (let i=0,col=0;i < gchilds.length;i ++) {
+
+    if (i % cols == 0 && i != 0) {
+	col ++;
+    }
+
+    // area starts from 1
     gchilds[i].style.gridArea = toArea(i+1);
 
-    // Dont add event listener for 1st child
-    if(!i) { continue; }
-
-    gchilds[i].addEventListener('click',function() {
-	swapper(this);
-    });
+    // Set except for 1st child
+    if(i > b_index) {
+	gchilds[i].style.backgroundPosition = `${pos['vert'][col]} ${pos['horz'][i % cols]}`;
+	gchilds[i].addEventListener('click',function() {
+	    swapper(this);
+	});
+    }
 }
 
 // Core Functions
