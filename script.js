@@ -13,17 +13,32 @@ const pos = {
     "horz" : ["left","center","right"]
 };
 
+const shuffled_order = (() => {
+    let set = new Set([b_index]);
+
+    const min = 0;
+    const max = gchilds.length;
+
+    while(set.size < gchilds.length) {
+	const rand_float = Math.random() * (max - min) + min;
+	const rand_index = Math.floor(rand_float);
+	set.add(rand_index);
+    }
+
+    return Array.from(set);
+})(); // Used IIFE
+
 for (let i=0,col=0;i < gchilds.length;i ++) {
 
     if (i % cols == 0 && i != 0) {
 	col ++;
     }
 
-    // area starts from 1
-    gchilds[i].style.gridArea = toArea(i+1);
+    let index = shuffled_order[i];
+    gchilds[index].style.gridArea = toArea(i + 1); // Area starts from 1
 
     // Set except for 1st child
-    if(i > b_index) {
+    if(i != b_index) {
 	gchilds[i].style.backgroundPosition = `${pos['vert'][col]} ${pos['horz'][i % cols]}`;
 	gchilds[i].addEventListener('click',function() {
 	    swapper(this);
