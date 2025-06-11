@@ -1,8 +1,8 @@
 const gparent = document.getElementsByTagName('gparent')[0];
 const gchilds = document.getElementsByTagName('gchild');
 
-const rows = 2;
-const cols = 2;
+const rows = 3;
+const cols = 3;
 
 // Blank piece Index
 const b_index = 0;
