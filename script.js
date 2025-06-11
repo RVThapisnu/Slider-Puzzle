@@ -3,6 +3,9 @@ const gchilds = document.getElementsByTagName('gchild');
 
 const resetBtn = document.getElementById('reset');
 
+const dialog = document.getElementsByTagName('dialog')[0];
+const dialogClose = document.getElementById('dclose');
+
 const rows = 3;
 const cols = 3;
 
@@ -46,20 +49,23 @@ for (let i=0,col=0;i < gchilds.length;i ++) {
 	    const t_pos = toIndex(t_area.gridArea);
 	    const b_pos = toIndex(b_area.gridArea);
 
-	    let a = swapper(t_area,b_area,t_pos,b_pos);
+	    swapper(t_area,b_area,t_pos,b_pos);
 	    checkPos(t,t_pos);
 	    checkPos(b,b_pos);
 
 	    // Win Event
 	    if(wrong_pieces == 0) {
-		// Due To EventLoop in JS
-		setTimeout(() => { alert('You have won the game') },0);
+		// Due To CallStack in JS
+		setTimeout(() => { dialog.showModal(); },0);
 	    }
 	});
     }
 }
 
 resetBtn.addEventListener('click',reset);
+dialogClose.addEventListener('click',() => {
+    dialog.close();
+});
 
 // Core Functions
 
@@ -71,8 +77,6 @@ function swapper(t_area,b_area,t_pos,b_pos) {
     if (isVertical || isHorizontal) {
 	[t_area.gridArea,b_area.gridArea] = [b_area.gridArea,t_area.gridArea];
     }
-
-    return true;
 }
 
 // Check whether piece is in the Correct Position and Update
@@ -87,7 +91,7 @@ function checkPos(piece,prev_Pos) {
     else if(isCurrentWrong && !isPreviousWrong) {
 	wrong_pieces ++;
     }
-    console.log("Wrong =",wrong_pieces);
+    //console.log("Wrong =",wrong_pieces);
 }
 
 // Check Vertical Positions
@@ -150,7 +154,7 @@ function toArea(index) {
     const area = area_label + index;
 
     const i = toIndex(area);
-    console.log(i);
+    //console.log(i);
 
     return area;
 }

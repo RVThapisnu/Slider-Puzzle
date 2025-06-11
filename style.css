@@ -4,9 +4,11 @@
     font-family:'Symbols';
     src:local('Symbols Nerd Font Mono');
 }
+
 * {
     margin:0px;
     padding:0px;
+    outline:0;
 }
 
 /* Body */
@@ -162,3 +164,36 @@ footer {
 }
 
 /* Footer */
+/* Dialog */
+
+dialog,dialog > * {
+    margin:revert;
+    padding:revert;
+}
+
+dialog:modal {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+dialog trophy {
+    font-family:'Symbols';
+    font-size:4em;
+    color:yellow;
+}
+
+#dclose {
+    border:2px solid black;
+    background-color:white;
+    padding:1.5%;
+}
+
+#dclose:focus,#dclose:hover {
+    background-color:black;
+    color:yellow;
+    border:4px solid yellow;
+}
+
+/* Dialog */
