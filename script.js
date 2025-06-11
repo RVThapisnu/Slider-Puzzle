@@ -1,6 +1,8 @@
 const gparent = document.getElementsByTagName('gparent')[0];
 const gchilds = document.getElementsByTagName('gchild');
 
+const resetBtn = document.getElementById('reset');
+
 const rows = 3;
 const cols = 3;
 
@@ -15,20 +17,7 @@ const pos = {
     "horz" : ["left","center","right"]
 };
 
-const shuffled_order = (() => {
-    let set = new Set([b_index]);
-
-    const min = 0;
-    const max = gchilds.length;
-
-    while(set.size < gchilds.length) {
-	const rand_float = Math.random() * (max - min) + min;
-	const rand_index = Math.floor(rand_float);
-	set.add(rand_index);
-    }
-
-    return Array.from(set);
-})(); // Used IIFE
+const shuffled_order = shuffle();
 
 for (let i=0,col=0;i < gchilds.length;i ++) {
 
@@ -69,6 +58,8 @@ for (let i=0,col=0;i < gchilds.length;i ++) {
 	});
     }
 }
+
+resetBtn.addEventListener('click',reset);
 
 // Core Functions
 
@@ -124,6 +115,35 @@ function checkHorizontal(t_pos,b_pos) {
     return isHorizontal;
 }
 
+function shuffle() {
+    let set = new Set([b_index]);
+
+    const min = 0;
+    const max = gchilds.length;
+
+    while(set.size < gchilds.length) {
+	const rand_float = Math.random() * (max - min) + min;
+	const rand_index = Math.floor(rand_float);
+	set.add(rand_index);
+    }
+
+    return Array.from(set);
+}
+
+// Reset Piece Order
+function reset() {
+    const shuffled = shuffle();
+
+    for(let i=0;i < gchilds.length;i ++) {
+	let index = shuffled[i];
+	gchilds[index].style.gridArea = toArea(i + 1); // Area starts from 1
+
+	// Count Wrong Pieces
+	if(gchilds[i] != gchilds[index]) {
+	    wrong_pieces ++;
+	}
+    }
+}
 // Helper Functions
 
 function toArea(index) {
