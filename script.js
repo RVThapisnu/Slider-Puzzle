@@ -6,8 +6,8 @@ const resetBtn = document.getElementById('reset');
 const dialog = document.getElementsByTagName('dialog')[0];
 const dialogClose = document.getElementById('dclose');
 
-const rows = 3;
-const cols = 3;
+const rows = Number(getComputedStyle(gparent).getPropertyValue('--rows'));
+const cols = Number(getComputedStyle(gparent).getPropertyValue('--cols'));
 
 // Blank piece Index
 const b_index = 0;

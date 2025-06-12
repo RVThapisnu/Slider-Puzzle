@@ -83,6 +83,8 @@ header nav a {
 /* Main */
 
 main {
+    --image:url('logo.png');
+
     flex:8;
 
     display:flex;
@@ -107,6 +109,8 @@ main > buttons > button {
 }
 
 gparent {
+    --rows:3;
+    --cols:3;
     
     height:50vh;
     width:50vh;
@@ -115,8 +119,8 @@ gparent {
     margin-right:5%;
 
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    grid-template-rows:repeat(3,1fr);
+    grid-template-columns:repeat(var(--cols),1fr);
+    grid-template-rows:repeat(var(--rows),1fr);
     /*grid-template-areas:
 	    "p1 p2"
 	    "p3 p4";*/
@@ -131,7 +135,7 @@ gchild {
     border:1px solid white;
     background-color:black;
 
-    background-image:url('logo.png');
+    background-image:var(--image);
     background-size:300%;
 
     display:flex;
@@ -146,7 +150,7 @@ gchild:nth-of-type(1) {
 }
 
 expected {
-    background-image:url('logo.png');
+    background-image:var(--image);
     background-size:100%;
     background-position:top left;
 
