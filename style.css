@@ -45,6 +45,15 @@ header > * {
     flex:1;
 }
 
+header img {
+    flex:0;
+
+    width:25px;
+    height:25px;
+
+    margin-right:0.5%;
+}
+
 header h3 {
    font-size:1.3em;     
 }
