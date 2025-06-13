@@ -2,8 +2,18 @@
 
 /* Fonts */
 @font-face {
-    font-family:'Symbols';
-    src:local('Symbols Nerd Font Mono');
+    font-family:'Fira';
+    font-weight:normal;
+    src:local('Fira Code Regular'),url('assets/FiraCode-Regular.ttf');
+}
+@font-face {
+    font-family:'Fira';
+    font-weight:bold;
+    src:local('Fira Code Bold'),url('assets/FiraCode-Bold.ttf');
+}
+@font-face {
+    font-family:'Fira';
+    src:local('Symbols Nerd Font Mono'),url('assets/SymbolsNerdFontMono-Regular.ttf');
 }
 
 /* All */
@@ -11,6 +21,7 @@
     margin:0px;
     padding:0px;
     outline:0;
+    font-family:'Fira';
 }
 
 /* Body */
@@ -65,8 +76,6 @@ header nav {
     align-self:end;
 
     height:100%;
-
-    font-family:'Symbols';
 }
 
 header nav a {
@@ -83,7 +92,7 @@ header nav a {
 /* Main */
 
 main {
-    --image:url('logo.png');
+    --image:url('assets/logo.png');
 
     flex:8;
 
@@ -194,7 +203,6 @@ dialog:modal {
 }
 
 dialog trophy {
-    font-family:'Symbols';
     font-size:4em;
     color:yellow;
 }

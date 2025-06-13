@@ -148,6 +148,7 @@ function reset() {
 	}
     }
 }
+
 // Helper Functions
 
 function toArea(index) {
